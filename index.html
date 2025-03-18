@@ -53,37 +53,47 @@
 
     <div class="landing-container">
         <h1 id="title">You have been invited to an exclusive dating site.</h1> <!-- Título -->
-        <p id="paragraph">⚠️ Your access is almost guaranteed! Confirm your email to see photos and chat now</p> <!-- Parágrafo -->
+        <p id="paragraph">⚠️ Your access is almost guaranteed! Confirm your email to see photos and chat now.</p> <!-- Parágrafo -->
         <button class="cta-button" id="cta-button" onclick="redirectUser()">Release Access Now 🔥</button> <!-- Botão -->
     </div>
 
     <script>
         // === CONFIGURAÇÕES QUE VOCÊ PRECISA EDITAR ===
         
-        var pageTitle = "You have been invited to an exclusive dating site."; // 🔹 TITULO DA LANDING PAGE (Muda o nome da aba do navegador e o título principal)
-        
-        var pageParagraph = "⚠️ Your access is almost guaranteed! Confirm your email to see photos and chat now."; // 🔹 DESCRIÇÃO ABAIXO DO TÍTULO (Use algo chamativo)
-        
-        var buttonText = "Release Access Now 🔥"; // 🔹 TEXTO DO BOTÃO (Ex: "Entrar Agora", "Acesse Já", "Clique Aqui")
-        
+        var pageTitle = "You have been invited to an exclusive dating site."; 
+        var pageParagraph = "⚠️ Your access is almost guaranteed! Confirm your email to see photos and chat now.";
+        var buttonText = "Release Access Now 🔥";
         var backgroundImage = "https://cdni.pornpics.com/460/7/668/30616758/30616758_003_955f.jpg"; 
-        // 🔹 URL DA IMAGEM DE FUNDO (Substitua pelo link de uma imagem que deseja usar)
         
-        var affiliateLink = "https://t.slext2.com/212319/8517/0"; 
-        // 🔹 SEU LINK DE AFILIADO (Coloque o link para onde o usuário será redirecionado ao clicar no botão)
-
-        // === APLICANDO AS CONFIGURAÇÕES NA PÁGINA ===
+        var offerUSA = "https://t.slext2.com/212319/8517/0"; 
+        var smartlink = "https://bggcdje.pixls.one/p/ye6cD"; 
         
-        document.title = pageTitle; // Define o título da aba do navegador
-        document.getElementById("title").innerText = pageTitle; // Altera o título na página
-        document.getElementById("paragraph").innerText = pageParagraph; // Altera a descrição
-        document.getElementById("cta-button").innerText = buttonText; // Altera o texto do botão
-        document.getElementById("page-body").style.backgroundImage = "url('" + backgroundImage + "')"; // Aplica a imagem de fundo
+        document.title = pageTitle; 
+        document.getElementById("title").innerText = pageTitle;
+        document.getElementById("paragraph").innerText = pageParagraph;
+        document.getElementById("cta-button").innerText = buttonText;
+        document.getElementById("page-body").style.backgroundImage = "url('" + backgroundImage + "')";
 
-        // === FUNÇÃO PARA REDIRECIONAMENTO ===
-        function redirectUser() {
-            window.location.href = affiliateLink; // Quando o botão for clicado, leva o usuário para o link de afiliado
+        // === FUNÇÃO PARA REDIRECIONAMENTO POR LOCALIZAÇÃO ===
+        async function redirectUser() {
+            try {
+                let response = await fetch('https://ipinfo.io/json?token=54e5b8714e7b86');
+                let data = await response.json();
+                let country = data.country; 
+
+                if (country === "US") {
+                    window.location.href = offerUSA;
+                } else {
+                    window.location.href = smartlink;
+                }
+            } catch (error) {
+                console.error("Erro ao obter localização:", error);
+                window.location.href = smartlink; // Fallback
+            }
         }
+
+        // === OPCIONAL: Redirecionamento Automático ao Carregar a Página ===
+        // window.onload = redirectUser;
     </script>
 
 </body>
